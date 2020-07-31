@@ -10,6 +10,9 @@ let package = Package(
         .library(
             name: "KeychainAccessWrapper",
             targets: ["KeychainAccessWrapper"]),
+        .executable(
+            name: "keychain-access-wrapper",
+            targets: ["keychain-access-wrapper"])
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -21,6 +24,9 @@ let package = Package(
         .target(
             name: "KeychainAccessWrapper",
             dependencies: []),
+        .target(
+            name: "keychain-access-wrapper",
+            dependencies: ["KeychainAccessWrapper"]),
         .testTarget(
             name: "KeychainAccessWrapperTests",
             dependencies: ["KeychainAccessWrapper"]),

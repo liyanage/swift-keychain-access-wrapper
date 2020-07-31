@@ -2,9 +2,9 @@
 import Foundation
 import Security
 
-struct KeychainAccessWrapper {
-        
-    func usernameAndPassword(forKeychainItemLabel keychainItemLabel: String) -> (String, String)? {
+public struct KeychainAccessWrapper {
+
+    public static func usernameAndPassword(forKeychainItemLabel keychainItemLabel: String) -> (String, String)? {
         let keychainQuery: [String: Any] = [kSecClass as String: kSecClassGenericPassword,
                                     kSecAttrLabel as String: keychainItemLabel,
                                     kSecReturnAttributes as String: true,
@@ -40,7 +40,7 @@ struct KeychainAccessWrapper {
         return (username, passwordString)
     }
 
-    func httpBasicAuthorizationHeaderValue(forKeychainItemLabel keychainItemLabel: String) -> String? {
+    public static func httpBasicAuthorizationHeaderValue(forKeychainItemLabel keychainItemLabel: String) -> String? {
         
         guard let (username, password) = usernameAndPassword(forKeychainItemLabel: keychainItemLabel) else {
             return nil
@@ -63,3 +63,4 @@ struct KeychainAccessWrapper {
     }
 
 }
+
